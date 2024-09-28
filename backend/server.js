@@ -10,6 +10,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use("/gemini", require("./routes/gemini"));
+app.use("/translate", require("./routes/translate"));
 
 // app.use("/translate", require("./routes/translate"));
 

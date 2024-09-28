@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "TOS TLDR",
+  "version": "1.0.0",
+  "description": "Making the internet a more fair and equitable place for everyone.",
+  "icons": {
+    "48": "images/icon-48.png",
+    "128": "images/icon-128.png"
+  },
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "src/popup.html"
+  },
+  "permissions": ["activeTab", "tabs"],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["src/build/main.js"]
+    }
+  ]
+}

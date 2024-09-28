@@ -1,1 +1,15 @@
-node_modules
+# Ignore compiled files
+dist/
+
+# Ignore node_modules
+node_modules/
+
+# Ignore parcel cache
+.parcel-cache/
+
+# Ignore package-lock.json
+package-lock.json
+
+# Ignore any IDE or editor specific files
+.idea/
+.vscode/

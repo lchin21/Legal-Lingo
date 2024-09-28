@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@google-cloud/vertexai": "^1.8.1",
+    "cors": "^2.8.5",
+    "express": "^4.21.0",
+    "google-auth-library": "^9.14.1"
+  }
+}

@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
     "@google-cloud/vertexai": "^1.8.1",
     "cors": "^2.8.5",

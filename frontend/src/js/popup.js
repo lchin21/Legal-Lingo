@@ -1,7 +1,6 @@
 document.getElementById('subject').addEventListener('change', function() {
     let selectedElement = document.querySelector('#subject');
     let chosen = selectedElement.value;
-    console.log("test1")
 
     chrome.storage.local.set({ language: chosen }).then(() => {
         console.log("Language is set");

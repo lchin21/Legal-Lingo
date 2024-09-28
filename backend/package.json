@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
     "@google-cloud/translate": "^8.5.0",
     "@google-cloud/vertexai": "^1.8.1",

@@ -1,10 +1,32 @@
 {
   "manifest_version": 3,
-  "name": "Shell Hacks TLDR TOS",
+  "name": "TOS TLDR",
+  "default_title": "TOS TLDR",
+  "default_popup": "popup.html",
   "version": "1.0.0",
   "description": "Making the internet a more fair and equitable place for everyone.",
-  "action": {
-    "default_popup": "popup.html"
+  "permissions": ["scripting", "storage", "tabs"],
+  "host_permissions": ["https://*.youtube.com/*"],
+  "background": {
+    "service_worker": "js/background.js"
   },
-  "permissions": ["scripting", "storage"]
+  "content_scripts": [
+    {
+      "matches": [],
+      "js": ["contentScript.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [],
+      "matches": []
+    }
+  ],
+  "action": {
+    "default_icon": {
+      "32": "assets/icon-32.png",
+      "64": "assets/icon-64.png",
+      "128": "assets/icon-128.png"
+    }
+  }
 }

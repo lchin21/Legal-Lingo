@@ -8,12 +8,12 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '20.14.0'
+          node-version: 'latest'
 
       - name: Clean install dependencies for prod
         run: npm ci

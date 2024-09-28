@@ -16,7 +16,7 @@ jobs:
           node-version: 'latest'
 
       - name: Clean install dependencies for prod
-        run: npm ci
+        run: npm install && npm ci
         
       - name: Build extension
         run: npm run build

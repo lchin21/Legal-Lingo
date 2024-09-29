@@ -21,5 +21,6 @@
 **.idea/
 .vscode/
 
-# ignore environment variables
+# ignore environment variables and api keys
 .env
+geminiKey.json

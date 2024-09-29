@@ -1,34 +1,47 @@
-# TOS TLDR
+# Termzinator
 
-We are building a Chrome Extension that the user can activate to detect the sections of their terms of service that are red flags deemed as predatory to the user.
+[Poster](./Termzinator%20Poster.png)
+
+## About the Project
+We are building a Chrome Extension that allows users to highlight the sections of their 
+terms of service document that may be predatory. Furthermore, the extension translates the 
+document into different languages. 
+
+Our goal is to help users, especially those from minority communities, better understand 
+these documents and make more informed decisions.
 
 ## Team Members
-- [Lane Chin](https://github.com/lchan21)
+- [Lane Chin](https://github.com/lchin21)
 - [Aadit Kamat](https://github.com/aaditkamat)
-- [Yining Liu](https://github.comy/iningliu1)
-- [Miguel A. Restrepo](https://www.linkedin.com/in/miguel-a-restrepo-2332b828b/)
+- [Yining Liu](https://github.com/iningliu1)
+- [Miguel A. Restrepo](https://github.com/Mrest68)
 
-## How to use with Parcel and TypeScript
+## Backend
 
-To use this Chrome Extension with Parcel and TypeScript, follow these steps:
+The backend is hosted using a Google Cloud Run Function. 
 
-1. Install the required dependencies:
+You can access it through [this endpoint](https://termsinator-backend-108092707474.us-central1.run.app/)
 
-```bash
-npm install
-```
-
-2. Update your `package.json` file with the following scripts:
+Here's a sample POST request to the endpoint:
 
 ```json
-"scripts": {
-  "start": "parcel src/index.html",
-  "build": "parcel build src/index.html"
+{
+    "method": "POST",
+    "body": {
+        "prompt": "This is a sample text"
+    },
+    "headers": {
+        "Content-type": "application/json; charset=UTF-8"
+    }
 }
 ```
+## Frontend (Loading the Chrome Extension)
 
-3. Run the development server with `npm start` and build the extension with `npm run build`.
+1. Go to `chrome://extensions/` in your Chrome browser.
+2. Turn on Developer Mode.
+3. Click on "Load Unpacked".
+4. Select the `frontend` folder in the repository.
 
-Now you should be able to use Parcel and TypeScript to develop and build your Chrome Extension.
+
 
 

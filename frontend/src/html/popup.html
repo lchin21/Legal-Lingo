@@ -10,30 +10,7 @@
     <title>Settings</title>
     <style>
         /* HTML: <div class="loader"></div> */
-.loader {
-  width: 120px;
-  height: 20px;
-  background: 
-    linear-gradient(#000 50%,#0000 0),
-    linear-gradient(#0000 50%,#000 0),
-    linear-gradient(#000 50%,#0000 0),
-    linear-gradient(#0000 50%,#000 0),
-    linear-gradient(#000 50%,#0000 0),
-    linear-gradient(#0000 50%,#000 0)
-    #ddd;
-  background-size: calc(100%/6 + 1px) 200%;
-  background-repeat: no-repeat;
-  animation: l12 2s infinite;
-}
-@keyframes l12 {
-  0%     {background-position: calc(0*100%/5) 100%,calc(1*100%/5)   0%,calc(2*100%/5) 100%,calc(3*100%/5)   0%,calc(4*100%/5) 100%,calc(5*100%/5)   0%}
-  16.67% {background-position: calc(0*100%/5)   0%,calc(1*100%/5)   0%,calc(2*100%/5) 100%,calc(3*100%/5)   0%,calc(4*100%/5) 100%,calc(5*100%/5)   0%}
-  33.33% {background-position: calc(0*100%/5)   0%,calc(1*100%/5) 100%,calc(2*100%/5) 100%,calc(3*100%/5)   0%,calc(4*100%/5) 100%,calc(5*100%/5)   0%}
-  50%    {background-position: calc(0*100%/5)   0%,calc(1*100%/5) 100%,calc(2*100%/5)   0%,calc(3*100%/5)   0%,calc(4*100%/5) 100%,calc(5*100%/5)   0%}
-  66.67% {background-position: calc(0*100%/5)   0%,calc(1*100%/5) 100%,calc(2*100%/5)   0%,calc(3*100%/5) 100%,calc(4*100%/5) 100%,calc(5*100%/5)   0%}
-  83.33% {background-position: calc(0*100%/5)   0%,calc(1*100%/5) 100%,calc(2*100%/5)   0%,calc(3*100%/5) 100%,calc(4*100%/5)   0%,calc(5*100%/5)   0%}
-  100%   {background-position: calc(0*100%/5)   0%,calc(1*100%/5) 100%,calc(2*100%/5)   0%,calc(3*100%/5) 100%,calc(4*100%/5)   0%,calc(5*100%/5) 100%}
-}
+
         select {
     text-align: center;
     text-align-last: center;
@@ -45,22 +22,21 @@
             text-align: center; /* Center the text */
         }
         
-        .form-container {
+.form-container {
     background-color: #faa60b;
-    width: 25%; /* Increased width */
+    width: 100%; /* Take full width of the extension popup */
+    max-width: 320px; /* Set a maximum width */
     height: auto; /* Height adjusts to content */
     color: white;
-    padding: 20px;
-    border-radius: 15px;
-    margin: 20px auto; /* Center the container horizontally */
+    padding: 10px; /* Smaller padding to fit in extension window */
+    border-radius: 10px; /* Slightly rounded corners */
     text-align: center; /* Center all text inside the container */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Reduce shadow size */
     
     display: flex; /* Use flexbox for alignment */
     flex-direction: column; /* Align children vertically */
     align-items: center; /* Center children horizontally */
 }
-
 
         /* Custom select dropdown styling */
         .custom-select {
@@ -109,11 +85,12 @@
         }
 
         /* Adjust image size */
-        .terminatorImg {
-            margin-top: 5%;
-            width: 90%; /* Increased width */
-            height: auto; /* Adjust height to maintain aspect ratio */
-        }
+     .terminatorImg {
+    width: 80%; /* Make image smaller to fit popup */
+    height: auto; /* Maintain aspect ratio */
+    margin-top: 10px; /* Smaller margin */
+}
+
 
         /* Style for h1 */
         h1.orbitron-terminator {
@@ -125,11 +102,7 @@
             display: inline-block; /* Tilt the text back */
  /* Apply text shadow */
         }
-        .loader {
-    width: 220px; /* Keep the existing loader width */
-    height: 20px; /* Keep the existing loader height */
-    margin-top: 20px; /* Add some margin for spacing */
-}
+       
     </style>
 </head>
 <body>
@@ -152,7 +125,6 @@
         <div>
             <img class="terminatorImg" src="terminator.jpg" alt="Terminator"/>
         </div>
-        <div class="loader"></div>
 
     </div>
 

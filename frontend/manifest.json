@@ -4,7 +4,10 @@
   "version": "1.0.0",
   "description": "Making the internet a more fair and equitable place for everyone.",
   "action": {
-    "default_popup": "./popup.html"
+    "default_popup": "./popup.html",
+    "default_icon": {
+      "16": "arnoldsquare.png"
+    }
   },
   "permissions": ["scripting", "storage"],
   "content_scripts": [

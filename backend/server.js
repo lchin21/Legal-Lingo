@@ -12,6 +12,4 @@ app.use(express.json());
 app.use("/gemini", require("./routes/gemini"));
 app.use("/translate", require("./routes/translate"));
 
-// app.use("/translate", require("./routes/translate"));
-
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

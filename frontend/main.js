@@ -204,6 +204,7 @@ const termsOfServiceTitles = [
 
 // Function to check headers
 function isTOS() {
+  chrome.storage.local.set({ numFlags: 0 });
   // Accumulate all the text from h1 to h6
   let headersText = "";
   for (let i = 1; i <= 6; i++) {
@@ -242,7 +243,7 @@ async function generateGeminiText() {
 if (isTOS()) {
   (async function () {
     const textToFind = await generateGeminiText();
-    console.log(Object.keys(textToFind).length);
+    chrome.storage.local.set({ numFlags: Object.keys(textToFind).length });
     console.log(textToFind);
     await highlightAndTranslate(textToFind);
   })();

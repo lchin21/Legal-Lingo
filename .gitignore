@@ -1,17 +1,24 @@
 # Ignore compiled files
-dist/
+**/dist/
 
 # Ignore node_modules
-node_modules/
-
-# Ignore parcel cache
-.parcel-cache/
+**/node_modules/
 
 # Ignore package-lock.json
-package-lock.json
+**/yarn.lock
 
 # Ignore any IDE or editor specific files
-.idea/
+**# Ignore compiled files
+**/dist/
+
+# Ignore node_modules
+**/node_modules/
+
+# Ignore package-lock.json
+**/yarn.lock
+
+# Ignore any IDE or editor specific files
+**.idea/
 .vscode/
 
 # ignore environment variables

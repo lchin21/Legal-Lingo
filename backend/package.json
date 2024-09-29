@@ -3,6 +3,7 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "@google-cloud/translate": "^8.5.0",
     "@google-cloud/vertexai": "^1.8.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",

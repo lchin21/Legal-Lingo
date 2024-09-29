@@ -20,3 +20,6 @@
 # Ignore any IDE or editor specific files
 **.idea/
 .vscode/
+
+# ignore environment variables
+.env

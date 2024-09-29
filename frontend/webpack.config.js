@@ -5,6 +5,7 @@ const ChromeExtensionReloader = require("webpack-chrome-extension-reloader");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
+const { webpack } = require("webpack");
 
 const isProduction = process.env.NODE_ENV == "production";
 
@@ -16,6 +17,7 @@ const config = {
   entry: {
     background: "./src/js/background.js",
     content: "./src/js/contentScript.js",
+    popup: "./src/js/popup.js"
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -26,7 +28,7 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "index.html",
+      template: "html/popup.html",
     }),
     new ChromeExtensionReloader({
       port: 9090,
@@ -35,9 +37,14 @@ const config = {
         background: "background",
         content: "content",
         popup: "popup",
-        options: "options",
-        newtab: "newtab",
       },
+    }),
+    new webpack.HotPluginReloadServer({
+      compilationHooks: {
+        processAssets: (compilation, assets) => {
+          
+        }
+      }
     })
     // Add your plugins here
     // Learn more about plugins from https://webpack.js.org/configuration/plugins/

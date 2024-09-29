@@ -1,5 +1,7 @@
 # TOS TLDR
 
+[![CI](https://github.com/lchin21/Shell-Hacks-2024/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/lchin21/Shell-Hacks-2024/actions/workflows/main.yml)
+
 We are building a Chrome Extension that the user can activate to detect the sections of their terms of service that are red flags deemed as predatory to the user.
 
 ## Team Members

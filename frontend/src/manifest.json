@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "TOS TLDR",
+  "default_title": "TOS TLDR",
+  "default_popup": "popup.html",
+  "version": "1.0.0",
+  "description": "Making the internet a more fair and equitable place for everyone.",
+  "permissions": ["storage", "tabs"],
+  "host_permissions": ["https://*.x.com/*"],
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.x.com/*"],
+      "js": ["js/contentScript.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [],
+      "matches": []
+    }
+  ],
+  "action": {
+    "default_icon": {
+      "32": "assets/icon-32.png",
+      "64": "assets/icon-64.png",
+      "128": "assets/icon-128.png"
+    }
+  }
+}
+

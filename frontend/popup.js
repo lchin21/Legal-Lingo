@@ -17,6 +17,7 @@ function setDefaultOption() {
         else {
             dropdown.value = "English";
         }
+        console.log(localStorage.getItem("currentLanguage"));
 }
 
 setDefaultOption()

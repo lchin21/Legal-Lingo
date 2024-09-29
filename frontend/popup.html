@@ -5,23 +5,26 @@
     <link rel="stylesheet" href="popup.css">
     <title>Settings</title>
 </head>
-<body>
+<body style="background: blanchedalmond">
     <div>
-        <title>
-            Settings
+        <div>
+        <title style="font-size: medium; margin-bottom: 10px">
+            Termsinator
         </title>
+        </div>
+        <div>
+            <form name="languageDropDown" id="languageDropDown" >
+                Language: <select name="subject" id="subject">
+                    <option value="English" >English</option>
+                    <option value="Spanish">Spanish</option>
+                    <option value="Russian">Russian</option>
+                    <option value="Creole">Creole</option>
+                    <option value="Chinese">Chinese</option>
+                </select>
+            </form>
+        </div>
     </div>
-    <div>
-        <form name="languageDropDown" id="languageDropDown" >
-            Language: <select name="subject" id="subject">
-                <option value="English" >English</option>
-                <option value="Spanish">Spanish</option>
-                <option value="Russian">Russian</option>
-                <option value="Creole">Creole</option>
-                <option value="Chinese">Chinese</option>
-            </select>
-        </form>
-    </div>
+    <
     <script src="popup.js"></script>
 </body>
 </html>

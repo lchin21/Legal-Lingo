@@ -1,15 +1,18 @@
 // gemini demos
 async function callGemini(text) {
   try {
-    const gemini = await fetch("http://localhost:3500/gemini", {
-      method: "POST",
-      body: JSON.stringify({
-        prompt: text,
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    }).then((res) => res.json());
+    const gemini = await fetch(
+      "https://termsinator-backend-108092707474.us-central1.run.app/gemini",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          prompt: text,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }
+    ).then((res) => res.json());
     return gemini;
   } catch (err) {
     console.log(err);
@@ -221,16 +224,19 @@ async function handleGeminiCall(text1) {
 // translate demos
 async function callTranslate(text, language) {
   try {
-    const translate = await fetch("http://localhost:3500/translate", {
-      method: "POST",
-      body: JSON.stringify({
-        text: text,
-        lang: language,
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    }).then((res) => res.json());
+    const translate = await fetch(
+      "https://termsinator-backend-108092707474.us-central1.run.app/translate",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          text: text,
+          lang: language,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }
+    ).then((res) => res.json());
     return translate;
   } catch (err) {
     console.log(err);
@@ -273,5 +279,5 @@ async function handleTranslateCall(text1, lang) {
 
 // handleGeminiCall(text1);
 
-lang = "Russian";
+lang = "Chinese";
 handleTranslateCall(text2, lang);

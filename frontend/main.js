@@ -71,6 +71,26 @@ function getLanguageFromStorage() {
   });
 }
 
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function generateExactMatchRegex(key) {
+  return new RegExp(`(${escapeRegExp(key)})`, 'gi');
+}
+
+function extractVisibleText(element) {
+  let text = '';
+  for (let node of element.childNodes) {
+    if (node.nodeType === Node.TEXT_NODE) {
+      text += node.textContent;
+    } else if (node.nodeType === Node.ELEMENT_NODE) {
+      text += extractVisibleText(node);
+    }
+  }
+  return text;
+}
+
 async function highlightAndTranslate(textToFind) {
   textToFind = await textToFind;
   const tooltip = document.createElement("div");
@@ -90,7 +110,6 @@ async function highlightAndTranslate(textToFind) {
   let lang;
   try {
     lang = await getLanguageFromStorage();
-    console.log(`lang: ${lang}`);
   } catch (error) {
     console.error("Failed to retrieve language:", error);
     lang = "English"; // Fallback to default if error
@@ -106,21 +125,35 @@ async function highlightAndTranslate(textToFind) {
   }
 
   elements.forEach((element) => {
-    let newHTML = element.innerHTML; // Start with the original HTML
+    const originalHTML = element.innerHTML;
+    let visibleText = extractVisibleText(element);
+    let matches = [];
 
-    // Loop through each key and replace it with a highlighted span
     for (const key in textToFind) {
-      const regex = new RegExp(`(${key})`, "g"); // Create a regex to match the key
-      newHTML = newHTML.replace(regex, (match) => {
-        // Use a unique identifier for each span
-        const uniqueKey = `highlight-${Date.now()}-${Math.random()}`;
-        return `<span id="${uniqueKey}" class="highlight" style="border: 2px solid red; background-color: red;" data-tooltip="${
-          isTranslated ? translatedText.vals[key] : textToFind[key]
-        }">${isTranslated ? translatedText.keys[key] : match}</span>`;
-      });
+      const regex = generateExactMatchRegex(key);
+      let match;
+      while ((match = regex.exec(visibleText)) !== null) {
+        matches.push({
+          key: key,
+          index: match.index,
+          length: match[0].length,
+          original: match[0]
+        });
+      }
     }
 
-    // Update the innerHTML once after all replacements
+    // Sort matches by index (to process from end to start)
+    matches.sort((a, b) => b.index - a.index);
+
+    let newHTML = originalHTML;
+    for (const match of matches) {
+      const replacement = `<span class="highlight" style="border: 2px solid red; background-color: red;" data-tooltip="${
+        isTranslated ? translatedText.vals[match.key] : textToFind[match.key]
+      }">${match.original}</span>`;
+      
+      newHTML = newHTML.slice(0, match.index) + replacement + newHTML.slice(match.index + match.length);
+    }
+
     element.innerHTML = newHTML;
 
     // Now, add event listeners for each highlighted element
@@ -209,6 +242,8 @@ async function generateGeminiText() {
 if (isTOS()) {
   (async function () {
     const textToFind = await generateGeminiText();
+    console.log(Object.keys(textToFind).length);
+    console.log(textToFind);
     await highlightAndTranslate(textToFind);
   })();
 }

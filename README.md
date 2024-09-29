@@ -1,6 +1,6 @@
 # Termzinator
 
-[Poster](./Termzinator%20Poster.png)
+<img src="./Termzinator Poster.png" width="500" />
 
 ## About the Project
 We are building a Chrome Extension that allows users to highlight the sections of their 

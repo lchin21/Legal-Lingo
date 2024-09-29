@@ -1,7 +1,9 @@
+require("dotenv").config();
+
 const { VertexAI } = require("@google-cloud/vertexai");
 
 exports.callGemini = async (req, res) => {
-  process.env.GOOGLE_APPLICATION_CREDENTIALS = "./serviceAccount.json";
+  process.env.GOOGLE_APPLICATION_CREDENTIALS = "./geminiKey.json";
   const text1 = req.body.prompt;
   try {
     // Initialize Vertex with your Cloud project and location
@@ -12,16 +14,16 @@ exports.callGemini = async (req, res) => {
     const model = "gemini-1.5-flash-002";
 
     const textsi_1 = {
-      text: `You will be given a company\'s terms of service as a prompt. Create a list of verbatim citations of the text that would be deemed predatory or harmful. With each verbatim citation, provide a brief explanation as to why it is predatory or harmful.
+      text: `You will be given a company\'s terms of service as a prompt. Create a list of verbatim citations of the text that could potentially be deemed predatory or harmful. With each verbatim citation, provide a brief explanation as to why it is predatory or harmful.
 
-    Address the user directly, in second person, and assume that they do not have a deep understanding of legal terms. Additionally, be assertive in the explanations, avoid using uncertain language such as \"perhaps\" instead use active voice. Try not to use legal terms or jargon in the response. 
-    
-    The response should solely consist of the verbatim citations, denoted by a, and their corresponding explanations, denoted by b, with the former and latter being returned in a json format that follows this format:
-    {
+      Address the user directly, in second person, and assume that they do not have a deep understanding of legal terms. Additionally, be assertive in the explanations, avoid using uncertain language such as \"perhaps\" instead use active voice. Try to sound as objective as possible and avoid being dramatic. Also, avoid using any complex legal terms or legal jargon in the response.
+
+      The response should solely consist of the verbatim citations, denoted by a, and their corresponding explanations, denoted by b, with the former and latter being returned in a json format that follows this format:
+      {
         a : b , a : b, a : b
-    }
-    
-    Do not include quotation marks around the verbatim citation.`,
+      }
+
+      Do not include quotation marks around the verbatim citation.`,
     };
 
     // Instantiate the models
@@ -29,7 +31,7 @@ exports.callGemini = async (req, res) => {
       model: model,
       generationConfig: {
         maxOutputTokens: 8192,
-        temperature: 1,
+        temperature: 0,
         topP: 0.95,
       },
       safetySettings: [

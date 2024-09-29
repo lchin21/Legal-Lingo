@@ -32,7 +32,7 @@ if (localStorage.getItem("currentLanguage") == "English"){
     newHTML = newHTML.replace(regex, (match) => {
       // Use a unique identifier for each span
       const uniqueKey = `highlight-${Date.now()}-${Math.random()}`;
-      return `<span id="${uniqueKey}" class="highlight" style="border: 2px solid red; background-color: red;" data-tooltip="${textToFind[key]}">${match}</span>`;
+      return `<span id="${uniqueKey}" class="highlight" style="border: 2px solid red; background-color: red;" data-tooltip="${textToFind[key]}">test</span>`;
     });
   }
 
@@ -62,32 +62,60 @@ if (localStorage.getItem("currentLanguage") == "English"){
 });
 }
 else {
-  // let translatedTextToFind = translate(textToFind);
-  let translatedTextToFind = {"spanishk1" : "spanishv1", "spanishk2" : "spanishv2", "spanishk3" : "spanishv3"};
-  let translatedArray = Array.from(translatedTextToFind);
-  originalArray = Array.from(textToFind)
+  let translatedText = translate(textToFind);
+  const translatedTextToFind = new Map(Object.entries(translatedText));
+  const textToFindMap = new Map(Object.entries(textToFind));
 
-    elements.forEach(element => {
-      let newHTML = element.innerHTML; // Start with the original HTML
+  const combinedMap = new Map();
+  array1 = Array.from(textToFindMap);
+  array2 = Array.from(translatedTextToFind);
 
-      // Loop through each key in the first map (textToFind)
-      for (let i = 0; i<translatedArray.length; i++) {
-        const regex = new RegExp(`(${originalArray[i][0]})`, 'g'); // Create a regex to match the key
-        newHTML = newHTML.replace(regex, (match) => {
-          // Use the key from the second map for the replacement
-          // const replacement = translatedArray[i][0]; // Get the replacement from the second map
+  for (let i = 0; i < array1.length; i++){
+    combinedMap.set(array1[i][0], array2[i]);
+  }
+  console.log(combinedMap);
 
-          // Use a unique identifier for each span
-          const uniqueKey = `highlight-${Date.now()}-${Math.random()}`;
-          return `<span id="${uniqueKey}" class="highlight" style="border: 2px solid red; background-color: red;" data-tooltip="${translatedTextToFind[i][1]}">${translatedTextToFind[i][0]}</span>`;
-        });
-      }
+    //ssssssssssssssssssssssssssssssssssssss
+  elements.forEach(element => {
+  let newHTML = element.innerHTML; // Start with the original HTML
 
-      // Update the innerHTML once after all replacements
-      element.innerHTML = newHTML;
+  // Loop through each key and replace it with a highlighted span
+  for (const key of combinedMap.keys()) {
+    const regex = new RegExp(`(${key})`, 'g'); // Create a regex to match the key
+    newHTML = newHTML.replace(regex, (match) => {
+      // Use a unique identifier for each span
+      const uniqueKey = `highlight-${Date.now()}-${Math.random()}`;
+      return `<span id="${uniqueKey}" class="highlight" style="border: 2px solid red; background-color: red;" data-tooltip="${combinedMap.get(key)[1]}">${combinedMap.get(key)[0]}</span>`;
+    });
+  }
+
+  // Update the innerHTML once after all replacements
+  element.innerHTML = newHTML;
+
+  // Now, add event listeners for each highlighted element
+  const highlightedElements = element.querySelectorAll('.highlight');
+
+  highlightedElements.forEach(highlightedElement => {
+    highlightedElement.addEventListener('mouseenter', (event) => {
+      tooltip.textContent = highlightedElement.getAttribute('data-tooltip'); // Set tooltip text
+      tooltip.style.display = 'block'; // Show the tooltip
+      tooltip.style.left = `${event.pageX + 10}px`; // Position tooltip
+      tooltip.style.top = `${event.pageY + 10}px`;
     });
 
+    highlightedElement.addEventListener('mousemove', (event) => {
+      tooltip.style.left = `${event.pageX + 10}px`; // Update tooltip position
+      tooltip.style.top = `${event.pageY + 10}px`;
+    });
+
+    highlightedElement.addEventListener('mouseleave', () => {
+      tooltip.style.display = 'none'; // Hide the tooltip
+    });
+  });
+});
+
 }
+
 
 
 

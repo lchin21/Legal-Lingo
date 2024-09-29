@@ -1,7 +1,9 @@
-const { VertexAI } = require("@google-cloud/vertexai");
 require("dotenv").config();
 
+const { VertexAI } = require("@google-cloud/vertexai");
+
 exports.callGemini = async (req, res) => {
+  process.env.GOOGLE_APPLICATION_CREDENTIALS = "./geminiKey.json";
   const text1 = req.body.prompt;
   try {
     // Initialize Vertex with your Cloud project and location

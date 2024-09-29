@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="popup.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Settings</title>
+    <style>
+      /* HTML: <div class="loader"></div> */
+
+      select {
+        text-align: center;
+        text-align-last: center;
+      }
+      .orbitron-terminator {
+        font-family: "Orbitron", sans-serif;
+        font-weight: 600; /* Make the heading bold */
+        color: white;
+        text-align: center; /* Center the text */
+      }
+
+      .form-container {
+        background-color: #faa60b;
+        width: 100%; /* Take full width of the extension popup */
+        max-width: 500%; /* Set a maximum width */
+        min-width: 320px;
+        height: auto; /* Height adjusts to content */
+        color: white;
+        border-radius: 10px; /* Slightly rounded corners */
+        text-align: center; /* Center all text inside the container */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Reduce shadow size */
+      }
+
+      /* Custom select dropdown styling */
+      .custom-select {
+        margin-top: 10px;
+        position: relative;
+        display: flex; /* Use flexbox for alignment */
+        justify-content: center; /* Center the dropdown */
+        align-items: center;
+        padding: 0;
+      }
+
+      .custom-select select {
+        appearance: none;
+        width: 100%;
+        font-size: 1.15rem;
+        padding: 0.675em 1em;
+        background-color: #fff;
+        border: 3px solid #000000;
+        border-radius: 0.25rem;
+        color: #000;
+        cursor: pointer;
+        text-align: center; /* Center text inside the dropdown */
+        padding-right: 2.5rem; /* Add some padding for the custom arrow */
+      }
+
+      /* Custom arrow for dropdown */
+      .custom-select::before,
+      .custom-select::after {
+        --size: 0.3rem;
+        content: "";
+        position: absolute;
+        right: 1rem;
+        pointer-events: none;
+      }
+
+      .custom-select::before {
+        border-left: var(--size) solid transparent;
+        border-right: var(--size) solid transparent;
+        border-bottom: var(--size) solid black;
+        top: 40%;
+      }
+
+      .custom-select::after {
+        border-left: var(--size) solid transparent;
+        border-right: var(--size) solid transparent;
+        border-top: var(--size) solid black;
+        top: 55%;
+      }
+
+      /* Adjust image size */
+      .terminatorImg {
+        width: 80%; /* Make image smaller to fit popup */
+        height: auto; /* Maintain aspect ratio */
+        margin-top: 10px; /* Smaller margin */
+      }
+
+      /* Style for h1 */
+      h1.orbitron-terminator {
+        margin-top: 20px;
+        font-size: 2.2rem;
+        letter-spacing: 4px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        transform: rotateX(15deg);
+        display: inline-block; /* Tilt the text back */
+        /* Apply text shadow */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <h1 class="orbitron-terminator">TERMZINATOR</h1>
+      <!-- Title -->
+
+      <form name="languageDropDown" id="languageDropDown">
+        <label
+          for="subject"
+          style="display: block; margin-bottom: 10px"
+          class="orbitron-terminator"
+          >Language</label
+        >
+        <div class="custom-select">
+          <select name="subject" id="subject">
+            <option value="English">English</option>
+            <option value="Spanish">Spanish</option>
+            <option value="Russian">Russian</option>
+            <option value="Creole">Creole</option>
+            <option value="Chinese">Chinese</option>
+          </select>
+        </div>
+      </form>
+
+      <div>
+        <img class="terminatorImg" src="terminator.jpg" alt="Terminator" />
+      </div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -22,19 +22,21 @@ exports.callTranslate = async (req, res) => {
   async function translateObject(obj) {
     const language = obj.languageTo;
     const textMap = obj.text;
-    const translatedText = {};
+    const translatedKeys = {};
+    const translatedVals = {};
     for (const [key, value] of Object.entries(textMap)) {
       try {
         const [translatedKey] = await translate.translate(key, language);
         const [translatedValue] = await translate.translate(value, language);
 
-        translatedText[translatedKey] = translatedValue;
+        translatedKeys[key] = translatedKey;
+        translatedVals[key] = translatedValue;
       } catch (error) {
         console.error(`Error translating key-value pair (${key}):`, error);
       }
     }
 
-    return translatedText;
+    return { keys: translatedKeys, vals: translatedVals };
   }
 
   translateObject(translationRequest)

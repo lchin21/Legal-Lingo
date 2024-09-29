@@ -1,137 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="popup.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap"
-      rel="stylesheet"
-    />
+<head>
+    <meta charset="UTF-8">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
 
     <title>Settings</title>
     <style>
-      /* HTML: <div class="loader"></div> */
+        /* HTML: <div class="loader"></div> */
 
-      select {
-        text-align: center;
-        text-align-last: center;
-      }
-      .orbitron-terminator {
-        font-family: "Orbitron", sans-serif;
-        font-weight: 600; /* Make the heading bold */
-        color: white;
-        text-align: center; /* Center the text */
-      }
 
-      .form-container {
-        background-color: #faa60b;
-        width: 100%; /* Take full width of the extension popup */
-        max-width: 500%; /* Set a maximum width */
-        min-width: 320px;
-        height: auto; /* Height adjusts to content */
-        color: white;
-        border-radius: 10px; /* Slightly rounded corners */
-        text-align: center; /* Center all text inside the container */
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Reduce shadow size */
-      }
+        select {
+    text-align: center;
+    text-align-last: center;
+    }
+        .orbitron-terminator {
+            font-family: "Orbitron", sans-serif;
+            font-weight: 600; /* Make the heading bold */
+            color: rgb(0, 0, 0);
+            text-align: center;
+             /* Center the text */
+        }
+        
+        body {
+    background-color: #ffffff !important;
+}
 
-      /* Custom select dropdown styling */
-      .custom-select {
-        margin-top: 10px;
-        position: relative;
-        display: flex; /* Use flexbox for alignment */
-        justify-content: center; /* Center the dropdown */
-        align-items: center;
-        padding: 0;
-      }
+        .form-container {
+    background-color: #f3f3e3;
+    width: 320px; /* Increased width */
+    height: auto; /* Height adjusts to content */
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px auto; /* Center the container horizontally */
+    text-align: center; /* Center all text inside the container */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+    position: relative;
+    display: flex; /* Use flexbox for alignment */
+    flex-direction: column; /* Align children vertically */
+    align-items: center; /* Center children horizontally */
+}
 
-      .custom-select select {
-        appearance: none;
-        width: 100%;
-        font-size: 1.15rem;
-        padding: 0.675em 1em;
-        background-color: #fff;
-        border: 3px solid #000000;
-        border-radius: 0.25rem;
-        color: #000;
-        cursor: pointer;
-        text-align: center; /* Center text inside the dropdown */
-        padding-right: 2.5rem; /* Add some padding for the custom arrow */
-      }
 
-      /* Custom arrow for dropdown */
-      .custom-select::before,
-      .custom-select::after {
-        --size: 0.3rem;
-        content: "";
-        position: absolute;
-        right: 1rem;
-        pointer-events: none;
-      }
+        /* Custom select dropdown styling */
+        .custom-select {
+            margin-top: 10px;
+            position: relative;
+            display: flex; /* Use flexbox for alignment */
+            justify-content: center; /* Center the dropdown */
+        }
 
-      .custom-select::before {
-        border-left: var(--size) solid transparent;
-        border-right: var(--size) solid transparent;
-        border-bottom: var(--size) solid black;
-        top: 40%;
-      }
+        .custom-select select {
+            appearance: none;
+            width: 100%;
+            font-size: 1.15rem;
+            padding: 0.675em 1em;
+            background-color: #fff;
+            border: 1px solid #000000;
+            border-radius: 0.25rem;
+            color: #000;
+            cursor: pointer;
+            text-align: center; /* Center text inside the dropdown */
+            padding-right: 2.5rem; /* Add some padding for the custom arrow */
+        }
 
-      .custom-select::after {
-        border-left: var(--size) solid transparent;
-        border-right: var(--size) solid transparent;
-        border-top: var(--size) solid black;
-        top: 55%;
-      }
+        /* Custom arrow for dropdown */
+        .custom-select::before,
+        .custom-select::after {
+            --size: 0.3rem;
+            content: "";
+            position: absolute;
+            right: 1rem;
+            pointer-events: none;
+        }
 
-      /* Adjust image size */
-      .terminatorImg {
-        width: 80%; /* Make image smaller to fit popup */
-        height: auto; /* Maintain aspect ratio */
-        margin-top: 10px; /* Smaller margin */
-      }
+        .custom-select::before {
+            border-left: var(--size) solid transparent;
+            border-right: var(--size) solid transparent;
+            border-bottom: var(--size) solid black;
+            top: 40%;
+        }
 
-      /* Style for h1 */
-      h1.orbitron-terminator {
-        margin-top: 20px;
-        font-size: 2.2rem;
-        letter-spacing: 4px;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-        transform: rotateX(15deg);
-        display: inline-block; /* Tilt the text back */
-        /* Apply text shadow */
-      }
+        .custom-select::after {
+            border-left: var(--size) solid transparent;
+            border-right: var(--size) solid transparent;
+            border-top: var(--size) solid black;
+            top: 55%;
+        }
+
+        /* Adjust image size */
+        .terminatorImg {
+            margin-top: 5%;
+            width: 90%; /* Increased width */
+            height: auto; /* Adjust height to maintain aspect ratio */
+        }
+
+        /* Style for h1 */
+ 
+        .loader {
+        justify-content: center;
+    width: 220px; /* Keep the existing loader width */
+    height: 20px; /* Keep the existing loader height */
+    margin-top: 20px; /* Add some margin for spacing */
+}
+.loader {
+    justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 4px solid #FFF;
+  border-right: 4px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader::after {
+  content: '';  
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border-left: 4px solid #ff0000;
+  border-bottom: 4px solid transparent;
+  animation: rotation 0.5s linear infinite reverse;
+}
+.footer{
+    color: rgb(86, 86, 86);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 10px;
+}
+
+#FD-P{
+    font-size: 15px;
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
+.glitch-wrapper {
+   width: 100%;
+   height: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+}
+
+.glitch {
+    font-family: "Orbitron", sans-serif;
+   position: relative;
+   font-size: 40px;
+   font-weight: bold;
+   color: #f38303;
+   letter-spacing: 3px;
+   z-index: 1;
+   margin-bottom: 10px;
+}
+
+.glitch:before,
+.glitch:after {
+   display: block;
+   content: attr(data-text);
+   position: absolute;
+   top: 0;
+   left: 0;
+   opacity: 0.8;
+}
+
+.glitch:before {
+   animation: glitch-it 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+   color: #FF0A0A;
+   z-index: -1;
+}
+
+.glitch:after {
+   animation: glitch-it 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+   color: #000000;
+   z-index: -2;
+}
+
+@keyframes glitch-it {
+   0% {
+      transform: translate(0);
+   }
+   20% {
+      transform: translate(-2px, 2px);
+   }
+   40% {
+      transform: translate(-2px, -2px);
+   }
+   60% {
+      transform: translate(2px, 2px);
+   }
+   80% {
+      transform: translate(2px, -2px);
+   }
+   to {
+      transform: translate(0);
+   }
+}
     </style>
-  </head>
-  <body>
+</head>
+<body style="background-color: #000;">
     <div class="form-container">
-      <h1 class="orbitron-terminator">TERMZINATOR</h1>
-      <!-- Title -->
-
-      <form name="languageDropDown" id="languageDropDown">
-        <label
-          for="subject"
-          style="display: block; margin-bottom: 10px"
-          class="orbitron-terminator"
-          >Language</label
-        >
-        <div class="custom-select">
-          <select name="subject" id="subject">
-            <option value="English">English</option>
-            <option value="Spanish">Spanish</option>
-            <option value="Russian">Russian</option>
-            <option value="Creole">Creole</option>
-            <option value="Chinese">Chinese</option>
-          </select>
+        <!-- <h1 class="orbitron-terminator">TERMZINATOR</h1> Title -->
+        <div class="glitch-wrapper">
+            <div class="glitch" data-text="TERMZINATOR">TERMZINATOR</div>
+         </div>
+        <form name="languageDropDown" id="languageDropDown">
+            <label for="subject" style="display: block; margin-bottom: 10px;" class="orbitron-terminator">Language</label>
+            <div class="custom-select">
+                <select name="subject" id="subject">
+                    <option value="Chinese">Chinese</option>
+                    <option value="Creole">Creole</option>
+                    <option value="English">English</option>
+                    <option value="Russian">Russian</option>
+                    <option value="Spanish">Spanish</option>
+                </select>
+            </div>
+        </form>
+        
+        <div>
+            <img class="terminatorImg" src="terminator.jpg" alt="Terminator"/>
         </div>
-      </form>
+        <div>
+            <div class="loader" > </div>
+            <p id="counter" class="orbitron-terminator"></p>
+            <p id='FD-P' class="orbitron-terminator" > Detecting  </p> 
+            
+        </div>
+        <footer class="footer"> @ShellHacks2024</footer>
 
-      <div>
-        <img class="terminatorImg" src="terminator.jpg" alt="Terminator" />
-      </div>
     </div>
 
+    
+    <script src="counter.js"></script>
     <script src="popup.js"></script>
-  </body>
+
+
+</body>
 </html>
